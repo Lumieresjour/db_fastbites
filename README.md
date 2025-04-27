@@ -7,7 +7,7 @@
     php artisan migrate
     download node.js
     npm install
-    npm run dev dab php artisan serve
+    npm run dev dan php artisan serve (menggunakan 2 cmd terpisah)
     http://localhost:8000/
     http://localhost:8000/admin
 ```
