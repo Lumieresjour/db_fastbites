@@ -1,6 +1,7 @@
 # cara pakai
 ```
     buat database dengan nama db_fastbites
+    copy .env example ke .env
     composer install
     php artisan migrate:fresh --seed
     php artisan storage:link
