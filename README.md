@@ -12,7 +12,7 @@
     http://localhost:8000/
     http://localhost:8000/admin
 ```
-## private repo frfr okok
+## private repo frfr
 # admin
 mokaisadmin@gmail.com
 (moka1234)
