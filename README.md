@@ -11,6 +11,9 @@
     npm run dev dan php artisan serve (menggunakan 2 cmd terpisah)
     http://localhost:8000/
     http://localhost:8000/admin
+
+
+    knzzz
 ```
 ## private repo frfr
 # admin
