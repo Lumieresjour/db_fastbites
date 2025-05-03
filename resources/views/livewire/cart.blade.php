@@ -87,20 +87,19 @@
                                                 <a onclick="event.preventDefault(); this.closest('form').submit()"
                                                     class="text-muted">
                                                     <i class="fi-rs-cross-small"></i>
-                                                    Clear Cart</a>
+                                                    Hapus Keranjang</a>
                                             </form>
                                         </td>
                                     </tr>
 
                                 </tbody>
                             @else
-                                <h1 class="text-xl font-bold pb-20">No item in cart</h1>
+                                <h1 class="text-xl font-bold pb-20">Tidak ada barang di keranjang</h1>
                             @endif
                         </table>
                     </div>
                     {{-- <div class="cart-action text-end">
-                        <a class="btn " href="{{ route('home') }}"><i class="fi-rs-shopping-bag mr-10"></i>Continue
-                            Shopping</a>
+                        <a class="btn " href="{{ route('home') }}"><i class="fi-rs-shopping-bag mr-10"></i>lanjutkan Belanja</a>
                     </div> --}}
                     @if (Cart::count() > 0)
                         <div class="flex justify-center mb-50">
@@ -108,24 +107,23 @@
                                 <div class=" rounded-xl cart-totals">
                                     <div class="mb-3">
                                         <h1 class="font-bold text-lg tracking-widest text-orange-500 mb-2 uppercase">
-                                            Cart total</h1>
+                                            Total Belanja</h1>
                                     </div>
                                     <div class="table-responsive">
                                         <table class="table">
                                             <tbody>
                                                 <tr>
-                                                    <td class="cart_total_label">Cart Subtotal</td>
+                                                    <td class="cart_total_label">Subtotal Keranjang</td>
                                                     <td class="cart_total_amount"><span
                                                             class="font-lg fw-900 text-brand">${{ Cart::subtotal() }}</span>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="cart_total_label">Shipping</td>
-                                                    <td class="cart_total_amount"> <i class="ti-gift mr-5"></i> Free
-                                                        Shipping</td>
+                                                    <td class="cart_total_label">Pengiriman</td>
+                                                    <td class="cart_total_amount"> <i class="ti-gift mr-5"></i> Gratis Ongkir</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="cart_total_label">Tax</td>
+                                                    <td class="cart_total_label">Pajak</td>
                                                     <td class="cart_total_amount">
                                                         <i class="ti-gift mr-5"></i>
                                                         <strong class="font-xl text-red-500">
@@ -148,7 +146,7 @@
                                     <div class="cart-action text-end">
                                         <a href="{{ route('checkout') }}" class="btn"> <i
                                                 class="fi-rs-box-alt mr-10"></i>
-                                            Proceed to Checkout</a>
+                                            Lanjutkan ke Pembayaran</a>
                                     </div>
                                 </div>
                             </div>
