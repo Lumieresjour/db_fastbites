@@ -94,7 +94,7 @@
 
                                 </tbody>
                             @else
-                                <h1 class="text-xl font-bold pb-20">Tidak ada barang di keranjang</h1>
+                                <h1 class="text-xl font-bold pb-20">Keranjang Kosong, Lanjutkan Belanja</h1>
                             @endif
                         </table>
                     </div>
