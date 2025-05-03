@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-25">
-                        <h4 class="font-semibold text-lg text-gray-600">Billing Details</h4>
+                        <h4 class="font-semibold text-lg text-gray-600">Detail Penagihan</h4>
                     </div>
                     <form method="post" action="{{route('checkout.order')}}" id="checkoutForm">
                         @csrf
@@ -53,13 +53,13 @@
                 <div class="col-md-6">
                     <div class="order_review border-0">
                         <div class="mb-5">
-                            <h3 class="my-2 text-lg font-semibold text-gray-600">Your Orders</h3>
+                            <h3 class="my-2 text-lg font-semibold text-gray-600">Pesanan Anda</h3>
                         </div>
                         <div class="table-responsive order_table text-center">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th colspan="2">Product</th>
+                                        <th colspan="2">Produk</th>
                                         <th>Total</th>
                                     </tr>
                                 </thead>
@@ -83,12 +83,12 @@
                                         <td class="product-subtotal" colspan="2">${{ Cart::subtotal() }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Tax</th>
+                                        <th>Pajak</th>
                                         <td class="product-subtotal" colspan="2">${{ Cart::tax() }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Shipping</th>
-                                        <td colspan="2"><em>Free Shipping</em></td>
+                                        <th>Pengiriman</th>
+                                        <td colspan="2"><em>Gratis Ongkir</em></td>
                                     </tr>
                                     <tr>
                                         <th>Total</th>
@@ -100,7 +100,7 @@
                         </div>
                         {{-- <div class="bt-1 border-color-1 mt-30 mb-30"></div> --}}
                         {{-- <form class="">
-                            <h3 class="my-2 text-lg font-semibold text-gray-600">How would you like to pay?</h3>
+                            <h3 class="my-2 text-lg font-semibold text-gray-600">Metode Pembayaran</h3>
                             <ul class="grid w-full gap-6 md:grid-cols-2">
                                 <li>
                                     <input type="radio" id="cod" name="payment" value="cod"
@@ -108,7 +108,7 @@
                                     <label for="cod"
                                         class="inline-flex items-center justify-between w-full p-3 text-gray-500 bg-white border border-gray-200 shadow-md rounded-lg cursor-pointer peer-checked:border-orange-500 peer-checked:text-orange-500 hover:text-gray-600 hover:bg-gray-100 ">
                                         <div class="block">
-                                            <div class="w-full text-lg font-semibold">Cash on delivery</div>
+                                            <div class="w-full text-lg font-semibold">COD Bayar di Tempat</div>
                                         </div>
                                         <svg aria-hidden="true" class="w-6 h-6 ml-3" fill="currentColor"
                                             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -124,7 +124,7 @@
                                     <label for="card"
                                         class="inline-flex items-center justify-between w-full p-3 text-gray-500 bg-white border border-gray-200 shadow-md rounded-lg cursor-pointer peer-checked:border-orange-500 peer-checked:text-orange-500 hover:text-gray-600 hover:bg-gray-100 ">
                                         <div class="block">
-                                            <div class="w-full text-lg font-semibold">Pay with card</div>
+                                            <div class="w-full text-lg font-semibold">Bayar dengan Kartu</div>
                                         </div>
                                         <svg aria-hidden="true" class="w-6 h-6 ml-3" fill="currentColor"
                                             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -136,7 +136,7 @@
                                 </li>
                             </ul>
                         </form> --}}
-                        <button type="submit" class="btn btn-block mt-30" onclick="document.getElementById('checkoutForm').submit();">Place Order</button>
+                        <button type="submit" class="btn btn-block mt-30" onclick="document.getElementById('checkoutForm').submit();">Lakukan Pesanan</button>
                     </div>
                 </div>
             </div>
