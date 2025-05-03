@@ -12,8 +12,7 @@
     http://localhost:8000/
     http://localhost:8000/admin
 
-
-    knzzz
+123
 ```
 ## private repo frfr
 # admin

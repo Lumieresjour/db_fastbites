@@ -17,7 +17,7 @@
                                 <nav class="">
                                     <ul class="">
                                         <li>
-                                            <h1 class="text-black font-bold text-[1rem]">Hi, {{ Auth::user()->name }}</h1>
+                                            <h1 class="text-black font-bold text-[1rem]">Hai, {{ Auth::user()->name }}</h1>
                                         </li>
                                         <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
                                             <ul class="sub-menu">
