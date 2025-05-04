@@ -14,7 +14,7 @@
         <div class="col-lg-12 col-mg-6"></div>
     </div>
     <div class="widget-category mb-30 rounded-3xl border-slate-200  shadow-md">
-        <h1 class="font-bold text-lg tracking-widest text-orange-500 mb-2 uppercase">Categories</h1>
+        <h1 class="font-bold text-lg tracking-widest text-[#ff5962] mb-2 uppercase">Kategori</h1>
         <ul class="categories">
             @foreach ($categories as $category)
                 <li>
@@ -29,20 +29,20 @@
     </div>
     <!-- Fillter By Price -->
     <div class="sidebar-widget price_range range mb-30 rounded-3xl border-slate-200 shadow-md" style="border-radius: 30px">
-        <h1 class="font-bold text-lg tracking-widest text-orange-500 mb-4 uppercase">Filter by price</h1>
+        <h1 class="font-bold text-lg tracking-widest text-[#ff5962] mb-4 uppercase">Filter Berdasarkan Harga</h1>
         <div class="price-filter">
             <form action="{{ url()->current() }}">
                 <div class="price-filter-inner">
                     <div id="slider-range"></div>
                     <div class="price_slider_amount">
                         <div class="label-input">
-                            <span>Range:</span>
+                            <span>Terendah - Tertinggi:</span>
                             <input type="text" id="amount" name="range" placeholder="Required format $xx - $xx">
                         </div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-sm">
-                    Apply Filter
+                    Terapkan Filter
                 </button>
             </form>
         </div>
