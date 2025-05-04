@@ -12,16 +12,16 @@
                             <div class="sort-by-cover">
                                 <div class="sort-by-product-wrap">
                                     <div class="sort-by">
-                                        <span><i class="fi-rs-apps-sort"></i>Sort by:</span>
+                                        <span><i class="fi-rs-apps-sort"></i>Urutkan berdasarkan:</span>
                                     </div>
                                     <div class="sort-by-dropdown-wrap">
                                         <span>
                                             @if ($sort === 'latest')
-                                                Latest: New Released
+                                                Terbaru: Baru Rilis
                                             @elseif ($sort === 'low-to-high')
-                                                Price: Low to High
+                                                Harga: Rendah Ke Tinggi
                                             @elseif ($sort === 'high-to-low')
-                                                Price: High to Low
+                                                Harga: Tinggi Ke Rendah
                                             @else
                                                 Default Sorting
                                             @endif
