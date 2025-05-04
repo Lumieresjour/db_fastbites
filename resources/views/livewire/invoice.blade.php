@@ -2,7 +2,7 @@
     <div class="container mx-auto px-4 py-8">
         <div class="flex justify-end mb-4">
             <a href="{{ route('invoice.pdf', $order) }}" target="__blank" class="btn">
-                Download Invoice</a>
+                Unduh Invoice</a>
         </div>
         <div class="bg-orange-100/40 p-8 rounded-3xl">
             <header class="flex justify-between items-center mb-8">
@@ -11,28 +11,28 @@
                     <p class="text-md">Invoice #{{ $order->id }}</p>
                 </div>
                 <div>
-                    <p class="text-orange-600 font-semibold">SHOPI</p>
-                    <p>Tetouan Shore, ISMO</p>
-                    <p>Tetouan</p>
-                    <p>yusufisawi@gmail.com</p>
+                    <p class="text-orange-600 font-semibold">FASTBITES</p>
+                    <p>Layanan pemesanan dan pengiriman produk daur ulang.</p>
+                    <p>Tanda Terima Resmi - Terima kasih atas pesanan Anda!</p>
+                    <p>moka@gmail.com</p>
                 </div>
             </header>
             <div class="mb-8 text-lg">
-                <p class="text-orange-600 font-semibold mb-2 text-xl">Bill To:</p>
-                <p><strong>Name</strong> : {{ ucfirst($order->user->name) }}</p>
-                <p><strong>Phone</strong> : {{ ucfirst($order->user->billingDetails->phone) }}</p>
-                <p><strong>Address</strong> : {{ ucfirst($order->user->billingDetails->billing_address) }}</p>
-                <p><strong>City</strong> : {{ ucfirst($order->user->billingDetails->city) }}, <strong>State</strong> :
+                <p class="text-orange-600 font-semibold mb-2 text-xl">Tagihan Kepada:</p>
+                <p><strong>Nama</strong> : {{ ucfirst($order->user->name) }}</p>
+                <p><strong>Telepon</strong> : {{ ucfirst($order->user->billingDetails->phone) }}</p>
+                <p><strong>Alamat</strong> : {{ ucfirst($order->user->billingDetails->billing_address) }}</p>
+                <p><strong>Kota</strong> : {{ ucfirst($order->user->billingDetails->city) }}, <strong>State</strong> :
                     {{ ucfirst($order->user->billingDetails->state) }}
                 </p>
             </div>
             <table class="w-full text-left table-auto bg-white/60">
                 <thead>
                     <tr>
-                        <th class="px-4 py-2 text-orange-600">Product image</th>
-                        <th class="px-4 py-2 text-orange-600">Product name</th>
-                        <th class="px-4 py-2 text-orange-600">Quantity</th>
-                        <th class="px-4 py-2 text-orange-600">Price</th>
+                        <th class="px-4 py-2 text-orange-600">Gambar Produk</th>
+                        <th class="px-4 py-2 text-orange-600">Nama Produk</th>
+                        <th class="px-4 py-2 text-orange-600">Jumlah</th>
+                        <th class="px-4 py-2 text-orange-600">Harga</th>
                         <th class="px-4 py-2 text-orange-600">Total</th>
                     </tr>
                 </thead>
