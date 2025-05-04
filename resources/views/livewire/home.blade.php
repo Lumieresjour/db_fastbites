@@ -6,7 +6,7 @@
                 <div class="col-lg-9">
                     <div class="shop-product-fillter">
                         <div class="totall-product">
-                            <p> We found <strong class="text-brand">{{ $products->total() }}</strong> items for you!</p>
+                            <p> Kami Menemukan <strong class="text-brand">{{ $products->total() }}</strong> Produk Yang Cocok Untuk Kamu!</p>
                         </div>
                         <div class="sort-by-product-area">
                             <div class="sort-by-cover">
@@ -32,14 +32,14 @@
                                 <div class="sort-by-dropdown">
                                     <ul>
                                         <li><a class="{{ $sort === 'latest' ? 'active' : '' }}"
-                                                href="{{ url()->current() }}?{{ http_build_query(array_merge(request()->query(), ['sort' => 'latest'])) }}">Latest:
-                                                New Released</a></li>
+                                                href="{{ url()->current() }}?{{ http_build_query(array_merge(request()->query(), ['sort' => 'latest'])) }}">Terbaru:
+                                                Baru Rilis</a></li>
                                         <li><a class="{{ $sort === 'low-to-high' ? 'active' : '' }}"
-                                                href="{{ url()->current() }}?{{ http_build_query(array_merge(request()->query(), ['sort' => 'low-to-high'])) }}">Price:
-                                                Low to High</a></li>
+                                                href="{{ url()->current() }}?{{ http_build_query(array_merge(request()->query(), ['sort' => 'low-to-high'])) }}">Harga:
+                                                Rendah Ke Tinggi</a></li>
                                         <li><a class="{{ $sort === 'high-to-low' ? 'active' : '' }}"
-                                                href="{{ url()->current() }}?{{ http_build_query(array_merge(request()->query(), ['sort' => 'high-to-low'])) }}">Price:
-                                                High to Low</a></li>
+                                                href="{{ url()->current() }}?{{ http_build_query(array_merge(request()->query(), ['sort' => 'high-to-low'])) }}">Harga:
+                                                Tinggi Ke Rendah</a></li>
                                         <li><a href="{{ route('home') }}">Default Sorting</a></li>
                                     </ul>
                                 </div>
