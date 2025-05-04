@@ -10,7 +10,7 @@
                         </div>
                         <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Kontak Kami</h5>
                         <p class="wow fadeIn animated">
-                            <strong>Alamat: </strong>Tetouan Shore
+                            <strong>Alamat: </strong>Jl. Cut Mutia No.88, Sepanjang Jaya, Kec. Rawalumbu, Kota Bks, Jawa Barat 17113
                         </p>
                         <p class="wow fadeIn animated">
                             <strong>Telepon: </strong>+021 682860421
