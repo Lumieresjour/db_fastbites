@@ -2,7 +2,7 @@
     <div class="form-group col-lg-12">
         <div class="custom_select">
             <select class="form-control select-active" name="country" id="country">
-                <option value="">Choose a option...</option>
+                <option value="">Pilih Provinsi...</option>
                 <option value="AC" {{$billingDetails && $billingDetails->country == 'AC' ? 'selected' : ''}}>Aceh</option>
                 <option value="BA" {{$billingDetails && $billingDetails->country == 'BA' ? 'selected' : ''}}>Bali</option>
                 <option value="BT" {{$billingDetails && $billingDetails->country == 'BT' ? 'selected' : ''}}>Banten</option>
