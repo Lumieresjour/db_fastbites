@@ -27,19 +27,19 @@
         <!-- Remember Me -->
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded pooorbg-gray-900 border-gray-300 pooorborder-gray-700 text-orange-600 shadow-sm focus:ring-orange-500 pooorfocus:ring-orange-600 pooorfocus:ring-offset-gray-800" name="remember">
-                <span class="ml-2 text-sm text-gray-600 pooortext-gray-400">{{ __('Remember me') }}</span>
+                <input id="remember_me" type="checkbox" class="rounded pooorbg-gray-900 border-gray-300 pooorborder-gray-700 text-[#FF5962] shadow-sm focus:ring-[#FF5962] pooorfocus:ring-[#FF5962] pooorfocus:ring-offset-gray-800" name="remember">
+                <span class="ml-2 text-sm text-gray-600 pooortext-gray-400">{{ __('Ingat Saya') }}</span>
             </label>
         </div>
 
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 pooortext-gray-400 hover:text-gray-900 pooorhover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 pooorfocus:ring-offset-gray-800" href="{{ route('password.request') }}">
+                <a class="underline text-sm text-gray-600 pooortext-gray-400 hover:text-gray-900 pooorhover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF5962] pooorfocus:ring-offset-gray-800" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
 
-            <x-primary-button class="bg-orange-500 px-5 py-2 text-white font-medium rounded-3xl ml-2">
+            <x-primary-button class="bg-[#FF5962] px-5 py-2 text-white font-medium rounded-3xl ml-2">
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
