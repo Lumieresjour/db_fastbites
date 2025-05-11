@@ -39,7 +39,7 @@
                                                     {{ $item->model->brief_description }}
                                                 </p>
                                             </td>
-                                            <td class="price" data-title="Price"><span>${{ $item->model->price }}
+                                            <td class="price" data-title="Price"><span>Rp{{ $item->model->price }}
                                                 </span></td>
                                             <td class="text-center" data-title="Stock">
                                                 <div
@@ -66,7 +66,7 @@
                                                 </div>
                                             </td>
                                             <td class="text-right" data-title="Cart">
-                                                <span>${{ $item->subtotal }} </span>
+                                                <span>Rp{{ $item->subtotal }} </span>
                                             </td>
                                             <td class="action" data-title="Remove">
                                                 <form action="{{ route('destroy.item') }}" method="post">
@@ -106,7 +106,7 @@
                             <div class="w-100">
                                 <div class=" rounded-xl cart-totals">
                                     <div class="mb-3">
-                                        <h1 class="font-bold text-lg tracking-widest text-orange-500 mb-2 uppercase">
+                                        <h1 class="font-bold text-lg tracking-widest text-[#FF5962] mb-2 uppercase">
                                             Total Belanja</h1>
                                     </div>
                                     <div class="table-responsive">
@@ -115,7 +115,7 @@
                                                 <tr>
                                                     <td class="cart_total_label">Subtotal Keranjang</td>
                                                     <td class="cart_total_amount"><span
-                                                            class="font-lg fw-900 text-brand">${{ Cart::subtotal() }}</span>
+                                                            class="font-lg fw-900 text-[#FF5962]">Rp{{ Cart::subtotal() }}</span>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -127,15 +127,15 @@
                                                     <td class="cart_total_amount">
                                                         <i class="ti-gift mr-5"></i>
                                                         <strong class="font-xl text-red-500">
-                                                            ${{ Cart::tax() }}
+                                                            Rp{{ Cart::tax() }}
                                                         </strong>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="cart_total_label">Total</td>
                                                     <td class="cart_total_amount">
-                                                        <strong><span class="font-xl fw-900 text-brand">
-                                                                ${{ Cart::total() }}
+                                                        <strong><span class="font-xl fw-900 text-[#FF5962]">
+                                                                Rp{{ Cart::total() }}
                                                             </span></strong>
                                                     </td>
 
@@ -144,7 +144,7 @@
                                         </table>
                                     </div>
                                     <div class="cart-action text-end">
-                                        <a href="{{ route('checkout') }}" class="btn"> <i
+                                        <a href="{{ route('checkout') }}" class="btn bg-[#FF5962] text-white hover:bg-[#FF7A81]"> <i
                                                 class="fi-rs-box-alt mr-10"></i>
                                             Lanjutkan ke Pembayaran</a>
                                     </div>

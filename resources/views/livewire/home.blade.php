@@ -62,7 +62,7 @@
                                         <div class="product-category flex gap-2 mb-2">
                                             @foreach ($p->categories as $index => $cat)
                                                 @if ($index < 4)
-                                                    <a class="bg-orange-400 py-1 px-2 text-white font-semibold rounded-full"
+                                                    <a class="bg-[#FF5962] py-1 px-2 text-white font-semibold rounded-full"
                                                         href="/?{{ http_build_query(array_merge(request()->query(), ['category' => $cat->slug])) }}"
                                                         rel="tag">{{ $cat->name }}</a>
                                                 @endif
@@ -76,14 +76,14 @@
                                         </h2>
                                         <div class="flex items-center justify-between">
                                             <div class="">
-                                                <p class="text-xl font-bold text-orange-500">${{ $p->price }}</p>
-                                                <p class="text-md line-through opacity-50">${{ $p->old_price }}</p>
+                                                <p class="text-xl font-bold text-[#FF5962]">Rp{{ number_format($p->price, 0, ',', '.') }}</p>
+                                                <p class="text-md line-through opacity-50">Rp{{ number_format($p->old_price, 0, ',', '.') }}</p>
                                             </div>
                                             <div class="show flex justify-end mt-3">
                                                 <form action="{{ route('cart.add') }}" method="post">
                                                     @csrf
                                                     <input type="hidden" name="product_id" value="{{ $p->id }}">
-                                                    <a onclick="this.closest('form').submit()" class="text-orange-500 hover:text-black duration-100">
+                                                    <a onclick="this.closest('form').submit()" class="text-[#FF5962] hover:text-black duration-100">
                                                         {{-- Add to cart --}}
                                                         <i class="fi-rs-shopping-cart-add text-3xl"></i>
                                                     </a>
@@ -101,4 +101,13 @@
             </div>
         </div>
     </section>
+    
+    <style>
+        .text-brand {
+            color: #FF5962 !important;
+        }
+        .active {
+            color: #FF5962 !important;
+        }
+    </style>
 </x-app-layout>

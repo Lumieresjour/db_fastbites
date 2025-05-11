@@ -10,13 +10,13 @@
                         </div>
                         <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Kontak Kami</h5>
                         <p class="wow fadeIn animated">
-                            <strong>Alamat: </strong>Jl. Cut Mutia No.88, Sepanjang Jaya, Kec. Rawalumbu, Kota Bks, Jawa Barat 17113
+                            <strong>Alamat: </strong>Perumahan Griya Timur Indah Jl.Bougenvile 3, Jatimulya, Kec Tambun Sel, Kab Bekasi, Jawa Barat 17510
                         </p>
                         <p class="wow fadeIn animated">
-                            <strong>Telepon: </strong>+021 682860421
+                            <strong>Telepon: </strong>+62 857-1425-1024
                         </p>
                         <p class="wow fadeIn animated">
-                            <strong>Email: </strong>moka@gmail.com
+                            <strong>Email: </strong>warungpojokrasa@gmail.com 
                         </p>
                     </div>
                 </div>

@@ -32,9 +32,8 @@
                                     <h2 class="title-detail text-xl font-semibold pb-2">{{ $product->name }}</h2>
                                     <div class="clearfix product-price-cover">
                                         <div class="product-price primary-color float-left">
-                                            <ins><span class="text-brand">${{ $product->price }}</span></ins>
-                                            <ins><span
-                                                    class="old-price font-md ml-15">${{ $product->old_price }}</span></ins>
+                                            <ins><span class="text-brand" style="color: #FF5962;">Rp{{ number_format($product->price, 0, ',', '.') }}</span>
+                                            <ins><span class="old-price font-md ml-15">Rp{{ number_format($product->old_price, 0, ',', '.') }}</span></ins>
                                         </div>
                                     </div>
                                     <div class="bt-1 border-color-1 mt-15 mb-15"></div>
@@ -43,11 +42,10 @@
                                     </div>
                                     <div class="product_sort_info font-xs mb-30">
                                         <ul>
-                                            <li class="mb-10"><i class="fi-rs-crown mr-5"></i> 1 Year AL Jazeera Brand
-                                                Warranty</li>
-                                            <li class="mb-10"><i class="fi-rs-refresh mr-5"></i> 30 Day Return Policy
+                                            <li class="mb-10"><i class="fi-rs-crown mr-5" style="color: #FF5962;"></i> Diskon hingga 50% untuk stok makanan berlebih</li>
+                                            <li class="mb-10"><i class="fi-rs-refresh mr-5" style="color: #FF5962;"></i> Ambil langsung di toko atau kirim via ojek online
                                             </li>
-                                            <li><i class="fi-rs-credit-card mr-5"></i> Cash on Delivery available</li>
+                                            <li><i class="fi-rs-credit-card mr-5" style="color: #FF5962;"></i> Bayar via e-wallet atau COD</li>
                                         </ul>
                                     </div>
                                     <div class="bt-1 border-color-1 mt-30 mb-30"></div>
@@ -56,7 +54,7 @@
                                             <form action="{{ route('cart.add') }}" method="post">
                                                 @csrf
                                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                                <button type="submit" class="button button-add-to-cart">
+                                                <button type="submit" class="button button-add-to-cart" style="background-color: #FF5962;">
                                                     Add to cart</button>
                                             </form>
                                         </div>
@@ -66,7 +64,7 @@
                                         <li class="mb-5">Tags:
                                             @foreach ($product->categories as $index => $cat)
                                                 <a href="/?{{ http_build_query(array_merge(request()->query(), ['category' => $cat->slug])) }}"
-                                                    el="tag">{{ $cat->name }}</a>
+                                                    el="tag" style="color: #FF5962;">{{ $cat->name }}</a>
                                                 @if ($index !== count($product->categories) - 1)
                                                     ,
                                                 @endif
@@ -75,9 +73,9 @@
                                         <li>Availability:
                                             @if ($product->stock_status === 'instock')
                                                 <span class="in-stock text-success ml-5">{{ $product->quantity }}
-                                                    Items In Stock</span>
+                                                    Stok Tersedia!</span>
                                             @else
-                                                <span class="out-stock text-danger ml-5">Out Stock</span>
+                                                <span class="out-stock text-danger ml-5">Stok Habis!</span>
                                             @endif
                                         </li>
                                     </ul>
@@ -89,7 +87,7 @@
                             <ul class="nav nav-tabs text-uppercase">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="Description-tab" data-bs-toggle="tab"
-                                        href="#Description">Description</a>
+                                        href="#Description">Deskripsi</a>
                                 </li>
                             </ul>
                             <div class="tab-content shop_info_tab entry-main-content">
@@ -103,4 +101,24 @@
                     </div>
                 </div>
     </section>
+    
+    <style>
+        .text-brand {
+            color: #FF5962 !important;
+        }
+        .primary-color {
+            color: #FF5962;
+        }
+        .button-add-to-cart {
+            background-color: #FF5962 !important;
+            /* Keep original border-color */
+        }
+        .nav-link.active {
+            color: #FF5962 !important;
+            /* Keep original border color */
+        }
+        a:hover {
+            color: #FF5962;
+        }
+    </style>
 </x-app-layout>

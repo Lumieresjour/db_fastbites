@@ -4,56 +4,56 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-25">
-                        <h4 class="font-semibold text-lg text-gray-600">Detail Penagihan</h4>
+                        <h4 class="font-semibold text-lg text-[#FF5962]">Detail Penagihan</h4>
                     </div>
                     <form method="post" action="{{route('checkout.order')}}" id="checkoutForm">
-                        @csrf
-                        <div class="mb-4">
-                            <x-input-label for="country" :value="__('Country *')" />
-                            @include('livewire.countries-select')
-                            <x-input-error class="mt-2" :messages="$errors->get('country')" />
-                        </div>
-                        <div class="mb-4">
-                            <x-input-label for="billing_address" :value="__('Address *')" />
-                            <x-text-input id="billing_address" name="billing_address" type="text"
-                                class="mt-1 block w-full" value="{{$billingDetails ? $billingDetails->billing_address : ''}}" required autofocus autocomplete="billing_address" />
-                            <x-input-error class="mt-2" :messages="$errors->get('billing_address')" />
-                        </div>
-                        <div class="mb-4">
-                            <x-input-label for="city" :value="__('City *')" />
-                            <x-text-input id="city" name="city" type="text" class="mt-1 block w-full"
-                                autofocus autocomplete="city" value="{{$billingDetails ? $billingDetails->city : ''}}"/>
-                            <x-input-error class="mt-2" :messages="$errors->get('city')" />
-                        </div>
-                        <div class="mb-4">
-                            <x-input-label for="state" :value="__('State / County *')" />
-                            <x-text-input id="state" name="state" type="text" class="mt-1 block w-full"
-                                autofocus autocomplete="state" value="{{$billingDetails ? $billingDetails->state : ''}}"/>
-                            <x-input-error class="mt-2" :messages="$errors->get('state')" />
-                        </div>
-                        <div class="mb-4">
-                            <x-input-label for="zipcode" :value="__('Postcode / ZIP *')" />
-                            <x-text-input id="zipcode" name="zipcode" type="text" class="mt-1 block w-full"
-                                autofocus autocomplete="zipcode" value="{{$billingDetails ? $billingDetails->zipcode : ''}}"/>
-                            <x-input-error class="mt-2" :messages="$errors->get('zipcode')" />
-                        </div>
-                        <div class="mb-4">
-                            <x-input-label for="phone" :value="__('Phone number *')" />
-                            <x-text-input id="phone" name="phone" type="text" class="mt-1 block w-full"
-                                autofocus autocomplete="phone" value="{{$billingDetails ? $billingDetails->phone : ''}}"/>
-                            <x-input-error class="mt-2" :messages="$errors->get('phone')" />
-                        </div>
-                        <div class="form-group mb-30">
-                            <x-input-label for="order_notes" :value="__('Additional information')" />
-                            <x-text-input id="order_notes" name="order_notes" type="text" class="mt-1 block w-full"
-                                autofocus autocomplete="order_notes" placeholder="Any notes?" value="{{$billingDetails ? $billingDetails->order_notes : ''}}"/>
-                        </div>
+                    @csrf
+                    <div class="mb-4">
+                        <x-input-label for="country" :value="'Provinsi *'" />
+                        @include('livewire.countries-select')
+                        <x-input-error class="mt-2" :messages="$errors->get('country')" />
+                    </div>
+                    <div class="mb-4">
+                        <x-input-label for="billing_address" :value="'Alamat *'" />
+                        <x-text-input id="billing_address" name="billing_address" type="text"
+                            class="mt-1 block w-full" value="{{$billingDetails ? $billingDetails->billing_address : ''}}" required autofocus autocomplete="billing_address" />
+                        <x-input-error class="mt-2" :messages="$errors->get('billing_address')" />
+                    </div>
+                    <div class="mb-4">
+                        <x-input-label for="city" :value="'Kota *'" />
+                        <x-text-input id="city" name="city" type="text" class="mt-1 block w-full"
+                            autofocus autocomplete="city" value="{{$billingDetails ? $billingDetails->city : ''}}"/>
+                        <x-input-error class="mt-2" :messages="$errors->get('city')" />
+                    </div>
+                    <div class="mb-4">
+                        <x-input-label for="state" :value="'Kecamatan *'" />
+                        <x-text-input id="state" name="state" type="text" class="mt-1 block w-full"
+                            autofocus autocomplete="state" value="{{$billingDetails ? $billingDetails->state : ''}}"/>
+                        <x-input-error class="mt-2" :messages="$errors->get('state')" />
+                    </div>
+                    <div class="mb-4">
+                        <x-input-label for="zipcode" :value="'Kode Pos *'" />
+                        <x-text-input id="zipcode" name="zipcode" type="text" class="mt-1 block w-full"
+                            autofocus autocomplete="zipcode" value="{{$billingDetails ? $billingDetails->zipcode : ''}}"/>
+                        <x-input-error class="mt-2" :messages="$errors->get('zipcode')" />
+                    </div>
+                    <div class="mb-4">
+                        <x-input-label for="phone" :value="'Nomor Telepon *'" />
+                        <x-text-input id="phone" name="phone" type="text" class="mt-1 block w-full"
+                            autofocus autocomplete="phone" value="{{$billingDetails ? $billingDetails->phone : ''}}"/>
+                        <x-input-error class="mt-2" :messages="$errors->get('phone')" />
+                    </div>
+                    <div class="form-group mb-30">
+                        <x-input-label for="order_notes" :value="'Catatan Tambahan'" />
+                        <x-text-input id="order_notes" name="order_notes" type="text" class="mt-1 block w-full"
+                            autofocus autocomplete="order_notes" placeholder="Catatan tambahan?" value="{{$billingDetails ? $billingDetails->order_notes : ''}}"/>
+                    </div>
                     </form>
                 </div>
                 <div class="col-md-6">
                     <div class="order_review border-0">
                         <div class="mb-5">
-                            <h3 class="my-2 text-lg font-semibold text-gray-600">Pesanan Anda</h3>
+                            <h3 class="my-2 text-lg font-semibold text-[#FF5962]">Pesanan Anda</h3>
                         </div>
                         <div class="table-responsive order_table text-center">
                             <table class="table">
@@ -75,16 +75,16 @@
                                                 </h5>
                                                 <span class="product-qty">x {{ $i->qty }}</span>
                                             </td>
-                                            <td>${{ $i->subtotal }}</td>
+                                            <td>Rp{{ $i->subtotal }}</td>
                                         </tr>
                                     @endforeach
                                     <tr>
                                         <th>SubTotal</th>
-                                        <td class="product-subtotal" colspan="2">${{ Cart::subtotal() }}</td>
+                                        <td class="product-subtotal" colspan="2">Rp{{ Cart::subtotal() }}</td>
                                     </tr>
                                     <tr>
                                         <th>Pajak</th>
-                                        <td class="product-subtotal" colspan="2">${{ Cart::tax() }}</td>
+                                        <td class="product-subtotal" colspan="2">Rp{{ Cart::tax() }}</td>
                                     </tr>
                                     <tr>
                                         <th>Pengiriman</th>
@@ -93,7 +93,7 @@
                                     <tr>
                                         <th>Total</th>
                                         <td colspan="2" class="product-subtotal"><span
-                                                class="font-xl text-brand fw-900">${{ Cart::total() }}</span></td>
+                                                class="font-xl text-[#FF5962] fw-900">Rp{{ Cart::total() }}</span></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -106,7 +106,7 @@
                                     <input type="radio" id="cod" name="payment" value="cod"
                                         class="hidden peer" required>
                                     <label for="cod"
-                                        class="inline-flex items-center justify-between w-full p-3 text-gray-500 bg-white border border-gray-200 shadow-md rounded-lg cursor-pointer peer-checked:border-orange-500 peer-checked:text-orange-500 hover:text-gray-600 hover:bg-gray-100 ">
+                                        class="inline-flex items-center justify-between w-full p-3 text-gray-500 bg-white border border-gray-200 shadow-md rounded-lg cursor-pointer peer-checked:border-[#FF5962] peer-checked:text-[#FF5962] hover:text-gray-600 hover:bg-gray-100 ">
                                         <div class="block">
                                             <div class="w-full text-lg font-semibold">COD Bayar di Tempat</div>
                                         </div>
@@ -122,7 +122,7 @@
                                     <input type="radio" id="card" name="payment" value="card"
                                         class="hidden peer" required>
                                     <label for="card"
-                                        class="inline-flex items-center justify-between w-full p-3 text-gray-500 bg-white border border-gray-200 shadow-md rounded-lg cursor-pointer peer-checked:border-orange-500 peer-checked:text-orange-500 hover:text-gray-600 hover:bg-gray-100 ">
+                                        class="inline-flex items-center justify-between w-full p-3 text-gray-500 bg-white border border-gray-200 shadow-md rounded-lg cursor-pointer peer-checked:border-[#FF5962] peer-checked:text-[#FF5962] hover:text-gray-600 hover:bg-gray-100 ">
                                         <div class="block">
                                             <div class="w-full text-lg font-semibold">Bayar dengan Kartu</div>
                                         </div>
@@ -136,7 +136,7 @@
                                 </li>
                             </ul>
                         </form> --}}
-                        <button type="submit" class="btn btn-block mt-30" onclick="document.getElementById('checkoutForm').submit();">Lakukan Pesanan</button>
+                        <button type="submit" class="btn btn-block mt-30 bg-[#FF5962] text-white hover:bg-[#FF7A81] border-[#FF5962]" onclick="document.getElementById('checkoutForm').submit();">Lakukan Pesanan</button>
                     </div>
                 </div>
             </div>
