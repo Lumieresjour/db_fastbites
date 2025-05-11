@@ -22,6 +22,6 @@ mokaisuser@gmail.com
 (moka1234)
 
 # contributor
-octa as Lumieresjour
-ravi as ranaart
-xx xx xx
+    1. octa as Lumieresjour
+    2. ravi as ranaart
+    3. xx xx xx
