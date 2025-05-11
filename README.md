@@ -21,6 +21,6 @@ mokaisadmin@gmail.com
 mokaisuser@gmail.com
 (moka1234)
 
-okta as Lumieresjour
+octa as Lumieresjour
 ravi as ranaart
 xx xx xx
