@@ -1,12 +1,12 @@
 <x-mail::message>
-# Your order has been completed
+# Pesanan Anda telah selesai
 
-Your order #{{ $order->id }} has been shipped.
+Pesanan Anda #{{ $order->id }} telah dikirim.
 
-Thank you for your purchase!
+Terima kasih atas pembelian Anda!
 
-<a href="{{ url('/dashboard') }}" style="background-color: #ed8936; color: #ffffff; font-weight: bold; text-decoration: none; padding: 12px 24px; border-radius: 4px; display: inline-block;">View Your Order</a>
+<a href="{{ url('/dashboard') }}" style="background-color: #FF5962; color: #ffffff; font-weight: bold; text-decoration: none; padding: 12px 24px; border-radius: 4px; display: inline-block;">View Your Order</a>
 
-Thanks,<br>
+Terimakasih,<br>
 {{ config('app.name') }}
 </x-mail::message>
