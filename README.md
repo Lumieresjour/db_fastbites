@@ -12,7 +12,11 @@
     http://localhost:8000/
     http://localhost:8000/admin
 
+<<<<<<< HEAD
     xxxxx
+=======
+    xxx
+>>>>>>> 0dc3618f24f118eed279786367cc9aed21cf8de9
 
 ```
 ## private repo frfr
