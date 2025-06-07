@@ -22,7 +22,8 @@
                 <p><strong>Nama</strong> : {{ ucfirst($order->user->name) }}</p>
                 <p><strong>Telepon</strong> : {{ ucfirst($order->user->billingDetails->phone) }}</p>
                 <p><strong>Alamat</strong> : {{ ucfirst($order->user->billingDetails->billing_address) }}</p>
-                <p><strong>Kota</strong> : {{ ucfirst($order->user->billingDetails->city) }}, <strong>State</strong> :
+                <p><strong>Kota</strong> : {{ ucfirst($order->user->billingDetails->city) }}, 
+                <p><strong>Kecamatan</strong> :
                     {{ ucfirst($order->user->billingDetails->state) }}
                 </p>
             </div>
