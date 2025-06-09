@@ -50,13 +50,17 @@ class ProductResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('price')
                     ->numeric()
-                    ->prefix('$')
+                    ->prefix('Rp')
                     ->rules(['min:0'])
+                    ->formatStateUsing(fn ($state) => $state ? number_format($state, 0, ',', '.') : '')
+                    ->dehydrateStateUsing(fn ($state) => (int) str_replace(['.', ','], '', $state))
                     ->required(),
                 Forms\Components\TextInput::make('old_price')
                     ->numeric()
-                    ->prefix('$')
+                    ->prefix('Rp')
                     ->rules(['min:0'])
+                    ->formatStateUsing(fn ($state) => $state ? number_format($state, 0, ',', '.') : '')
+                    ->dehydrateStateUsing(fn ($state) => (int) str_replace(['.', ','], '', $state))
                     ->required(),
                 Forms\Components\TextInput::make('quantity')->numeric(),
                 Forms\Components\TextInput::make('brief_description')
@@ -130,7 +134,10 @@ class ProductResource extends Resource
                 Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('SKU')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('price')->prefix('$')->sortable(),
+                Tables\Columns\TextColumn::make('price')
+                    ->prefix('Rp ')
+                    ->formatStateUsing(fn ($state) => number_format($state, 0, ',', '.'))
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('quantity')->sortable(),
                 Tables\Columns\TextColumn::make('created_at')->sortable()->date('M d H:i'),
                 Tables\Columns\TextColumn::make('updated_at')->sortable()->date('M d H:i'),

@@ -37,11 +37,11 @@
                     <div class="price_slider_amount">
                         <div class="label-input">
                             <span>Terendah - Tertinggi:</span>
-                            <input type="text" id="amount" name="range" placeholder="Required format $xx - $xx">
+                            <input type="text" id="amount" name="range" placeholder="Format yang diperlukan Rp.xxx - Rp.xxx">
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-sm bg-[#FF5962] text-white hover:bg-[#FF7A81] border-[#FF5962]">
+                <button type="submit" class="btn btn-sm text-white hover:bg-[#FF7A81] border-[#FF5962]" style="background-color: #FF5962;">
                     Terapkan Filter
                 </button>
             </form>

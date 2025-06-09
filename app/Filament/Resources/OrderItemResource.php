@@ -34,7 +34,10 @@ class OrderItemResource extends Resource
                         Forms\Components\TextInput::make('name')->disabled(),
                         Forms\Components\TextInput::make('SKU')->disabled(),
                         Forms\Components\TextInput::make('quantity')->disabled(),
-                        Forms\Components\TextInput::make('price')->prefix('$')->disabled(),
+                        Forms\Components\TextInput::make('price')
+                            ->prefix('Rp')
+                            ->formatStateUsing(fn ($state) => number_format($state, 0, ',', '.'))
+                            ->disabled(),
                     ]),
                 Forms\Components\Fieldset::make('order_id')
                     ->relationship('order')
@@ -74,7 +77,10 @@ class OrderItemResource extends Resource
                         'success' => 'completed',
                         'danger' => 'canceled',
                     ])->sortable(),
-                Tables\Columns\TextColumn::make('price')->prefix('$')->sortable(),
+                Tables\Columns\TextColumn::make('price')
+                    ->prefix('Rp ')
+                    ->formatStateUsing(fn ($state) => number_format($state, 0, ',', '.'))
+                    ->sortable(),
             ])
             ->filters([
                 //

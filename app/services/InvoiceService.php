@@ -9,11 +9,11 @@ use LaravelDaily\Invoices\Classes\InvoiceItem;
 class InvoiceService {
     public function createInvoice($order) {
         $client = new Party([
-            'name'          => 'Shopi',
+            'name'          => 'WARUNG POJOK RASA',
             'custom_fields' => [
-                'seller'        => 'Youssef El Aissaoui',
-                'phone'         => '+(212) 682860421',
-                'email'         => 'yusufisawi@gmail.com',
+                'seller'        => 'Ery Beawati',
+                'phone'         => '+62 821-3456-7890',
+                'email'         => 'warungpojokrasa@tokoonline.co.id',
             ],
         ]);
 
@@ -44,8 +44,8 @@ class InvoiceService {
             ->date($order->created_at)
             ->dateFormat('m/d/Y')
             ->payUntilDays(14)
-            ->currencySymbol('$')
-            ->currencyCode('USD')
+            ->currencySymbol('Rp')
+            ->currencyCode('IDR')
             ->currencyFormat('{SYMBOL}{VALUE}')
             ->currencyThousandsSeparator('.')
             ->currencyDecimalPoint(',')
