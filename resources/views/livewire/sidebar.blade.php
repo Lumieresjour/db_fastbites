@@ -27,7 +27,8 @@
 
         </ul>
     </div>
-    <!-- Fillter By Price -->
+    <!-- Hapus filter harga -->
+    {{-- 
     <div class="sidebar-widget price_range range mb-30 rounded-3xl border-slate-200 shadow-md" style="border-radius: 30px">
         <h1 class="font-bold text-lg tracking-widest text-[#FF5962] mb-4 uppercase">Filter Berdasarkan Harga</h1>
         <div class="price-filter">
@@ -47,4 +48,5 @@
             </form>
         </div>
     </div>
+    --}}
 </div>

@@ -19,7 +19,7 @@ class OrderCompletedListener
     {
         if ($event->order->status === 'completed') {
             $user = $event->order->user;
-            Mail::to($user->email)->send(new OrderCompletedMail($event->order));
+
         }
     }
 }
