@@ -74,7 +74,7 @@ class OrderItemResource extends Resource
                         'success' => 'completed',
                         'danger' => 'canceled',
                     ])->sortable(),
-                Tables\Columns\TextColumn::make('price')->prefix('Rp')->sortable(),
+                Tables\Columns\TextColumn::make('price')->label('Harga')->formatStateUsing(fn ($state) => 'Rp' . number_format($state, 0, ',', '.'))->sortable(),
             ])
             ->filters([
                 //
