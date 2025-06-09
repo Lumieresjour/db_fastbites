@@ -85,10 +85,12 @@ class OrderItemResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
-                FilamentExportBulkAction::make('export'),
+                // Hapus atau komentari baris di bawah ini
+                // FilamentExportBulkAction::make('export'),
             ])
             ->headerActions([
-                FilamentExportHeaderAction::make('export')
+                // Hapus atau komentari baris di bawah ini
+                // FilamentExportHeaderAction::make('export')
             ]);
     }
 
