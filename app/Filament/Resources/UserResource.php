@@ -41,8 +41,8 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('email')->searchable()->sortable(),
                 Tables\Columns\ToggleColumn::make('is_admin')->sortable(),
-                Tables\Columns\TextColumn::make('created_at')->sortable()->date('M d H:i'),
-                Tables\Columns\TextColumn::make('updated_at')->sortable()->date('M d H:i'),
+                Tables\Columns\TextColumn::make('created_at')->sortable()->date('M d H:i')->timezone('asia/bangkok'),
+                Tables\Columns\TextColumn::make('updated_at')->sortable()->date('M d H:i')->timezone('asia/bangkok'),
             ])
             ->filters([
                 //
