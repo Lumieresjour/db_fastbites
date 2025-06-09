@@ -124,16 +124,29 @@ class ProductResource extends Resource
     {
         return $table
             ->headerActions([
-                FilamentExportHeaderAction::make('export')
+                ExportHeaderAction::make('export'),
             ])
             ->columns([
                 Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('SKU')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('price')->prefix('$')->sortable(),
-                Tables\Columns\TextColumn::make('quantity')->sortable(),
-                Tables\Columns\TextColumn::make('created_at')->sortable()->date('M d H:i'),
-                Tables\Columns\TextColumn::make('updated_at')->sortable()->date('M d H:i'),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('SKU')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('price')
+                    ->prefix('$')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('quantity')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->sortable()
+                    ->dateTime('M d H:i')
+                    ->timezone('Asia/Bangkok'),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->sortable()
+                    ->dateTime('M d H:i')
+                    ->timezone('Asia/Bangkok'),
             ])
             ->filters([
                 //
