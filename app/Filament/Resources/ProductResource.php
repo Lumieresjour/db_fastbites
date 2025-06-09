@@ -132,8 +132,8 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('SKU')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('price')->prefix('$')->sortable(),
                 Tables\Columns\TextColumn::make('quantity')->sortable(),
-                Tables\Columns\TextColumn::make('created_at')->sortable()->date('M d H:i'),
-                Tables\Columns\TextColumn::make('updated_at')->sortable()->date('M d H:i'),
+                Tables\Columns\TextColumn::make('created_at')->sortable()->date('M d H:i')->timezone('asia/bangkok'),
+                Tables\Columns\TextColumn::make('updated_at')->sortable()->date('M d H:i')->timezone('asia/bangkok'),
             ])
             ->filters([
                 //
