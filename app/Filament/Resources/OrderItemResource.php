@@ -34,7 +34,7 @@ class OrderItemResource extends Resource
                         Forms\Components\TextInput::make('name')->disabled(),
                         Forms\Components\TextInput::make('SKU')->disabled(),
                         Forms\Components\TextInput::make('quantity')->disabled(),
-                        Forms\Components\TextInput::make('price')->prefix('Rp')->disabled(),
+                        Forms\Components\TextInput::make('price')->prefix('$')->disabled(),
                     ]),
                 Forms\Components\Fieldset::make('order_id')
                     ->relationship('order')
@@ -74,7 +74,7 @@ class OrderItemResource extends Resource
                         'success' => 'completed',
                         'danger' => 'canceled',
                     ])->sortable(),
-                Tables\Columns\TextColumn::make('price')->label('Harga')->formatStateUsing(fn ($state) => 'Rp' . number_format($state, 0, ',', '.'))->sortable(),
+                Tables\Columns\TextColumn::make('price')->prefix('$')->sortable(),
             ])
             ->filters([
                 //
@@ -85,12 +85,10 @@ class OrderItemResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
-                // Hapus atau komentari baris di bawah ini
-                // FilamentExportBulkAction::make('export'),
+                FilamentExportBulkAction::make('export'),
             ])
             ->headerActions([
-                // Hapus atau komentari baris di bawah ini
-                // FilamentExportHeaderAction::make('export')
+                FilamentExportHeaderAction::make('export')
             ]);
     }
 

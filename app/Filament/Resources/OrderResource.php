@@ -69,12 +69,15 @@ class OrderResource extends Resource
                         'danger' => 'canceled',
                     ])
                     ->sortable(),
-                Tables\Columns\TextColumn::make('total')
-                    ->label('Total')
-                    ->formatStateUsing(fn ($state) => 'Rp' . number_format($state, 0, ',', '.'))
-                    ->sortable(),
+<<<<<<< HEAD
+                Tables\Columns\TextColumn::make('total')->prefix('$')->sortable(),
+                Tables\Columns\TextColumn::make('created_at')->sortable()->date('M d H:i'),
+                Tables\Columns\TextColumn::make('updated_at')->sortable()->date('M d H:i'),
+=======
+                Tables\Columns\TextColumn::make('total')->prefix('Rp')->sortable(),
                 Tables\Columns\TextColumn::make('created_at')->sortable()->date('M d H:i')->timezone('asia/bangkok'),
                 Tables\Columns\TextColumn::make('updated_at')->sortable()->date('M d H:i')->timezone('asia/bangkok'),
+>>>>>>> parent of 4ca0a15 (admin panel)
             ])
             ->filters([
                 //
