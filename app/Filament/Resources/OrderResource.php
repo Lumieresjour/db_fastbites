@@ -69,7 +69,10 @@ class OrderResource extends Resource
                         'danger' => 'canceled',
                     ])
                     ->sortable(),
-                Tables\Columns\TextColumn::make('total')->prefix('$')->sortable(),
+                Tables\Columns\TextColumn::make('total')
+                    ->prefix('Rp ')
+                    ->formatStateUsing(fn ($state) => number_format($state, 0, ',', '.'))
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')->sortable()->date('M d H:i'),
                 Tables\Columns\TextColumn::make('updated_at')->sortable()->date('M d H:i'),
             ])
