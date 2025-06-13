@@ -65,7 +65,7 @@
                                                     </div>
                                                     <div class="shopping-cart-title">
                                                         <h4><a href="{{ route('product.details', $item->model->id) }}">{{ $item->model->name }}</a></h4>
-                                                        <h3><span>{{ $item->qty }} × </span>Rp{{ $item->price }}</h3>
+                                                        <h3><span>{{ $item->qty }} × </span>Rp{{ number_format((float) str_replace(['.', ','], '', $item->price), 0, ',', '.') }}</h3>
                                                     </div>
                                                     <div class="shopping-cart-delete">
                                                         <form action="{{ route('destroy.item') }}" method="post">
