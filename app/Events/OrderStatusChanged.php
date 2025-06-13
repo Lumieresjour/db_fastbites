@@ -35,4 +35,15 @@ class OrderStatusChanged
             new PrivateChannel('channel-name'),
         ];
     }
+
+    public function handle(OrderStatusChanged $event)
+    {
+        $order = $event->order;
+        if ($order->status === 'completed') {
+            $user = $order->user;
+            if ($user) {
+                $user->increment('cashback', 5000);
+            }
+        }
+    }
 }

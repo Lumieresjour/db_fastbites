@@ -25,11 +25,13 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required(),
-                Forms\Components\TextInput::make('email')
-                    ->required(),
-                Forms\Components\TextInput::make('is_admin')
+                Forms\Components\TextInput::make('name')->required(),
+                Forms\Components\TextInput::make('email')->required(),
+                Forms\Components\TextInput::make('is_admin')->required(),
+                Forms\Components\TextInput::make('cashback')
+                    ->label('Cashback (Rp)')
+                    ->numeric()
+                    ->default(0)
                     ->required(),
             ]);
     }
@@ -41,6 +43,10 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('email')->searchable()->sortable(),
                 Tables\Columns\ToggleColumn::make('is_admin')->sortable(),
+                Tables\Columns\TextColumn::make('cashback')
+                    ->label('Cashback')
+                    ->formatStateUsing(fn ($state) => 'Rp' . number_format($state, 0, ',', '.'))
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')->sortable()->date('M d H:i')->timezone('asia/bangkok'),
                 Tables\Columns\TextColumn::make('updated_at')->sortable()->date('M d H:i')->timezone('asia/bangkok'),
             ])

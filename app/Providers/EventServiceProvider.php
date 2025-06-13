@@ -22,8 +22,8 @@ class EventServiceProvider extends ServiceProvider
         ],
         OrderStatusChanged::class => [
             OrderCompletedListener::class,
+            \App\Listeners\OrderStatusChangedListener::class, // Pastikan listener cashback di sini
         ],
-
     ];
 
     /**
