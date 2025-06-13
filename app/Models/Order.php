@@ -13,7 +13,7 @@ class Order extends Model
 
     protected $fillable = [
         'user_id', 'status', 'total', 'country',
-        'session_id',
+        'session_id', 'cashback_used',
     ];
 
     protected static function boot()

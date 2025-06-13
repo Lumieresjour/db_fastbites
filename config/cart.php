@@ -55,13 +55,19 @@ return [
     */
 
     'format' => [
-
-        'decimals' => 2,
-
-        'decimal_point' => '.',
-
-        'thousand_seperator' => ','
-
+        'thousand_seperator' => '.',
+        'decimal_seperator' => ',',
+        'decimals' => 0,
+        'currency' => 'Rp',
+        'currency_position' => 'left',
+        'currency_separator' => ' ',
+        'show_currency' => true,
+        'show_decimals' => false,
+        'number_format' => [
+            'locale' => 'id_ID',
+            'style' => 'currency',
+            'currency' => 'IDR'
+        ]
     ],
 
 ];

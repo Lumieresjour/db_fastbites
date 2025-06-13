@@ -16,26 +16,43 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class Checkout extends Component
 {
     public $use_cashback = false;
+    public $cashback_amount = 0;
+    public $final_total = 0;
+    public $cart_total = 0;
 
     public function mount()
     {
         $this->use_cashback = request()->has('use_cashback');
+        $this->calculateTotals();
     }
 
     public function updatedUseCashback($value)
     {
+        $this->calculateTotals();
+    }
+
+    protected function calculateTotals()
+    {
         $user = auth()->user();
         if ($user) {
-            $cartTotal = (float) str_replace(['$', ','], '', Cart::total());
-            $max = min($user->cashback, $cartTotal);
-            $this->use_cashback = $value;
+            // Get cart total without formatting
+            $this->cart_total = (float) str_replace(['.', ','], '', Cart::total());
+            
+            // Calculate cashback amount
+            if ($this->use_cashback && $user->cashback > 0) {
+                $this->cashback_amount = min($user->cashback, $this->cart_total);
+            } else {
+                $this->cashback_amount = 0;
+            }
+            
+            // Calculate final total
+            $this->final_total = $this->cart_total - $this->cashback_amount;
         }
     }
 
     public function getCartTotal()
     {
-        // Ganti dengan logika total belanja Anda
-        return \Cart::total();
+        return Cart::total();
     }
 
     public function success(Request $request, InvoiceService $invoiceService)
@@ -86,33 +103,56 @@ class Checkout extends Component
             $user->billingDetails()->update($validatedRequest);
         }
 
-        $cartTotal = (int) str_replace('.', '', \Cart::total());
-        $cashbackUsed = ($this->use_cashback && $user->cashback > 0) ? min($user->cashback, $cartTotal) : 0;
-        $finalTotal = $cartTotal - $cashbackUsed;
-
-        if ($cashbackUsed > 0) {
-            $user->decrement('cashback', $cashbackUsed);
+        // Calculate totals
+        $cartTotal = (float) str_replace(['.', ','], '', Cart::total());
+        $cashbackUsed = 0;
+        
+        // Check if cashback should be used
+        if ($this->use_cashback && $user->cashback > 0) {
+            $cashbackUsed = min($user->cashback, $cartTotal);
+            // Reset user's cashback balance to 0
+            $user->cashback = 0;
+            $user->save();
+            
+            // Add logging
+            \Log::info('Cashback reset attempt', [
+                'user_id' => $user->id,
+                'old_cashback' => $user->getOriginal('cashback'),
+                'new_cashback' => $user->cashback,
+                'cashback_used' => $cashbackUsed
+            ]);
+        } else {
+            // Reset cashback to 0 even if not used
+            $user->cashback = 0;
+            $user->save();
+            
+            \Log::info('Cashback reset (not used)', [
+                'user_id' => $user->id,
+                'old_cashback' => $user->getOriginal('cashback'),
+                'new_cashback' => $user->cashback
+            ]);
         }
 
-        // Create order directly
-        $order = new Order([
+        $finalTotal = $cartTotal - $cashbackUsed;
+
+        // Create order
+        $order = Order::create([
             'user_id' => $user->id,
             'status' => 'processing',
             'total' => $finalTotal,
-            'session_id' => uniqid('bypass_', true), // Fake session ID
+            'session_id' => uniqid('bypass_', true),
             'cashback_used' => $cashbackUsed,
         ]);
-        $order->save();
 
+        // Create order items
         foreach (Cart::content() as $item) {
-            $price = str_replace(',', '', $item->price);
-            $orderItem = new OrderItem([
+            $price = (float) str_replace(['.', ','], '', $item->price);
+            OrderItem::create([
                 'order_id' => $order->id,
                 'product_id' => $item->model->id,
                 'quantity' => $item->qty,
                 'price' => $price
             ]);
-            $orderItem->save();
         }
 
         Cart::destroy();
@@ -130,7 +170,10 @@ class Checkout extends Component
         $billingDetails = $user->billingDetails;
         return view('livewire.checkout', [
             'billingDetails' => $billingDetails,
-            'use_cashback' => $this->use_cashback
+            'use_cashback' => $this->use_cashback,
+            'cashback_amount' => $this->cashback_amount,
+            'final_total' => $this->final_total,
+            'cart_total' => $this->cart_total
         ]);
     }
 }

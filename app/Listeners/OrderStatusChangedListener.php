@@ -24,7 +24,7 @@ class OrderStatusChangedListener
         $order = $event->order;
         if ($order->status === 'completed') {
             $user = $order->user;
-            if ($user) {
+            if ($user && $order->cashback_used == 0) {
                 $user->increment('cashback', 5000);
             }
         }

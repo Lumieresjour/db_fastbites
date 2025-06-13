@@ -28,7 +28,10 @@ class Dashboard extends Component
             ->orderBy('created_at', 'desc')
             ->paginate(5);
 
-        return view('livewire.dashboard', compact('orders'));
+        return view('livewire.dashboard', [
+            'orders' => $orders,
+            'user' => $user
+        ]);
     }
 
 }
