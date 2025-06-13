@@ -59,16 +59,13 @@
                                             @foreach (Cart::content() as $item)
                                                 <li>
                                                     <div class="shopping-cart-img">
-                                                        <a href="{{ route('product.details', $item->model->id) }}">
-                                                            <img alt="" src="{{ asset('storage/'.$item->model->image) }}"></a>
+                                                        <a href="{{ route('product.details', $item->model->id) }}"><img
+                                                                alt="{{ $item->model->name }}"
+                                                                src="{{ asset('storage/'.$item->model->image) }}"></a>
                                                     </div>
                                                     <div class="shopping-cart-title">
-                                                        <h4><a
-                                                                href="{{ route('product.details', $item->model->id) }}">
-                                                                {{ strlen($item->model->name) > 15 ? substr($item->model->name, 0, 15) . '...' : $item->model->name }}
-                                                            </a>
-                                                        </h4>
-                                                        <h4><span>{{$item->qty}} × </span>${{$item->model->price}}</h4>
+                                                        <h4><a href="{{ route('product.details', $item->model->id) }}">{{ $item->model->name }}</a></h4>
+                                                        <h3><span>{{ $item->qty }} × </span>Rp{{ $item->price }}</h3>
                                                     </div>
                                                     <div class="shopping-cart-delete">
                                                         <form action="{{ route('destroy.item') }}" method="post">
@@ -83,7 +80,7 @@
                                         </ul>
                                         <div class="shopping-cart-footer">
                                             <div class="shopping-cart-total">
-                                                <h4>Total <span>${{Cart::total()}}</span></h4>
+                                                <h4>Total <span>Rp{{ Cart::total() }}</span></h4>
                                             </div>
                                             <div class="shopping-cart-button">
                                                 <a href="{{ route('cart') }}" class="btn btn-sm btn-secondary">View cart</a>
