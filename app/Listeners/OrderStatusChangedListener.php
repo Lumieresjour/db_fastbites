@@ -30,7 +30,7 @@ class OrderStatusChangedListener
 
         if ($order->status === 'completed') {
             if ($order->cashback_used == 0) {
-                $user->increment('cashback', 5000);
+                $user->increment('cashback', 1000);
             }
         } elseif ($order->status === 'canceled') {
             // Return the cashback that was used in this order
