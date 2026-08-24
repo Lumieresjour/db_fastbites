@@ -19,15 +19,15 @@ class BillingDetailResource extends Resource
 {
     protected static ?string $model = BillingDetail::class;
 
-    protected static ?string $modelLabel = 'Detail Penagihan';
+    protected static ?string $modelLabel = 'Detail Pembayaran';
 
-    protected static ?string $pluralModelLabel = 'Detail Penagihan';
+    protected static ?string $pluralModelLabel = 'Detail Pembayaran';
 
     protected static ?string $navigationIcon = 'heroicon-o-document';
 
     protected static ?string $navigationGroup = 'Pelanggan';
 
-    protected static ?string $navigationLabel = 'Detail Penagihan';
+    protected static ?string $navigationLabel = 'Detail Pembayaran';
 
     public static function form(Form $form): Form
     {
@@ -45,9 +45,9 @@ class BillingDetailResource extends Resource
                 Tables\Columns\TextColumn::make('user.name')->label('Nama pengguna')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('user.email')->label('Email pengguna')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('phone')->label('Nomor telepon')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('billing_address')->label('Alamat penagihan')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('billing_address')->label('Alamat')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('city')->label('Kota')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('country')->label('Negara')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('country')->label('Provinsi')->searchable()->sortable(),
             ])
             ->filters([
                 //
