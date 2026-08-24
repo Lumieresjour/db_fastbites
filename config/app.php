@@ -140,7 +140,6 @@ return [
 
     'maintenance' => [
         'driver' => 'file',
-        // 'store'  => 'redis',
     ],
 
     /*
