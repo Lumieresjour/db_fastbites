@@ -36,7 +36,7 @@ class BillingDetailResource extends Resource
                 //
             ]);
     }
-
+    //diganti
     public static function table(Table $table): Table
     {
         return $table
