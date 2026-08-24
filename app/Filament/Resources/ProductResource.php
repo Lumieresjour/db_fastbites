@@ -34,21 +34,29 @@ class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
 
+    protected static ?string $modelLabel = 'Produk';
+
+    protected static ?string $pluralModelLabel = 'Produk';
+
     protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
 
-    protected static ?string $navigationGroup = 'Shop';
+    protected static ?string $navigationGroup = 'Toko';
+
+    protected static ?string $navigationLabel = 'Produk';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                    ->label('Nama produk')
                     ->required(),
                 Forms\Components\TextInput::make('SKU')
-                    ->helperText('SKU be like this SKU-####')
+                    ->helperText('Format SKU: SKU-####')
                     ->regex('/SKU-\d{4}/')
                     ->required(),
                 Forms\Components\TextInput::make('price')
+                    ->label('Harga')
                     ->numeric()
                     ->prefix('Rp')
                     ->rules(['min:0'])
@@ -56,19 +64,21 @@ class ProductResource extends Resource
                     ->dehydrateStateUsing(fn ($state) => (int) str_replace(['.', ','], '', $state))
                     ->required(),
                 Forms\Components\TextInput::make('old_price')
+                    ->label('Harga lama')
                     ->numeric()
                     ->prefix('Rp')
                     ->rules(['min:0'])
                     ->formatStateUsing(fn ($state) => $state ? number_format($state, 0, ',', '.') : '')
                     ->dehydrateStateUsing(fn ($state) => (int) str_replace(['.', ','], '', $state))
                     ->required(),
-                Forms\Components\TextInput::make('quantity')->numeric(),
+                Forms\Components\TextInput::make('quantity')->label('Jumlah')->numeric(),
                 Forms\Components\TextInput::make('brief_description')
+                    ->label('Deskripsi singkat')
                     ->rules(['min:10', 'max:100'])
                     ->required(),
                 Forms\Components\Select::make('stock_status')->options([
-                    'instock' => 'In Stock',
-                    'outstock' => 'Out of Stock',
+                    'instock' => 'Tersedia',
+                    'outstock' => 'Stok Habis',
                 ])
                     ->default('instock'),
                 Forms\Components\FileUpload::make('image')
@@ -77,7 +87,7 @@ class ProductResource extends Resource
                         $name = explode('.', $fileName);
                         return (string) str('images/products/main_image/' . $name[0] . '.' . $name[1]);
                     })
-                    ->label('Main Image')
+                    ->label('Gambar Utama')
                     ->maxSize(3072)
                     ->image()
                     ->imageResizeMode('cover')
@@ -92,7 +102,7 @@ class ProductResource extends Resource
                         return (string) str('images/products/alt_images/' . $name[0] . '.' . $name[1]);
                     })
                     ->columnSpan('full')
-                    ->label('Alternate Images')
+                    ->label('Gambar Alternatif')
                     ->maxSize(3072)
                     ->image()
                     ->imageResizeMode('cover')
@@ -101,6 +111,7 @@ class ProductResource extends Resource
                     ->imageResizeTargetHeight('450')
                     ->required(),
                 Forms\Components\RichEditor::make('description')
+                    ->label('Deskripsi')
                     ->maxLength(1000)
                     ->columnSpan('full')
                     ->toolbarButtons([
@@ -118,6 +129,7 @@ class ProductResource extends Resource
                         'undo',
                     ]),
                 Forms\Components\CheckboxList::make('categories')
+                    ->label('Kategori')
                     ->columnSpan('full')
                     ->relationship('categories', 'name'),
 
@@ -128,19 +140,20 @@ class ProductResource extends Resource
     {
         return $table
             ->headerActions([
-                FilamentExportHeaderAction::make('export')
+                FilamentExportHeaderAction::make('export')->label('Ekspor')
             ])
             ->columns([
-                Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('SKU')->searchable()->sortable(),
+                Tables\Columns\ImageColumn::make('image')->label('Gambar'),
+                Tables\Columns\TextColumn::make('name')->label('Nama')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('SKU')->label('SKU')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('price')
+                    ->label('Harga')
                     ->prefix('Rp ')
                     ->formatStateUsing(fn ($state) => number_format($state, 0, ',', '.'))
                     ->sortable(),
-                Tables\Columns\TextColumn::make('quantity')->sortable(),
-                Tables\Columns\TextColumn::make('created_at')->sortable()->date('M d H:i')->timezone('asia/bangkok'),
-                Tables\Columns\TextColumn::make('updated_at')->sortable()->date('M d H:i')->timezone('asia/bangkok'),
+                Tables\Columns\TextColumn::make('quantity')->label('Jumlah')->sortable(),
+                Tables\Columns\TextColumn::make('created_at')->label('Dibuat pada')->sortable()->date('d/m/Y H:i')->timezone('asia/bangkok'),
+                Tables\Columns\TextColumn::make('updated_at')->label('Diubah pada')->sortable()->date('d/m/Y H:i')->timezone('asia/bangkok'),
             ])
             ->filters([
                 //
@@ -151,7 +164,7 @@ class ProductResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
-                FilamentExportBulkAction::make('export'),
+                FilamentExportBulkAction::make('export')->label('Ekspor'),
             ]);
     }
 

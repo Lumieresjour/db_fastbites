@@ -25,7 +25,7 @@ class statsOverview extends BaseWidget
             ->color('success')
             ->icon('heroicon-o-currency-dollar'),
             Card::make('Pesanan yang Belum Dikirim', $unshippedOrders)
-              ->description('Orders that have not been shipped yet')
+              ->description('Pesanan yang belum dikirim')
               ->color('danger')
               ->icon('heroicon-o-inbox'),
         ];

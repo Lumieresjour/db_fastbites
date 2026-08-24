@@ -18,9 +18,15 @@ class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
 
+    protected static ?string $modelLabel = 'Kategori';
+
+    protected static ?string $pluralModelLabel = 'Kategori';
+
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
-    protected static ?string $navigationGroup = 'Shop';
+    protected static ?string $navigationGroup = 'Toko';
+
+    protected static ?string $navigationLabel = 'Kategori';
 
     public static function form(Form $form): Form
     {
@@ -47,8 +53,8 @@ class CategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('created_at')->sortable()->date('d/m/Y H:i'),
-                Tables\Columns\TextColumn::make('updated_at')->sortable()->date('d/m/Y H:i'),
+                Tables\Columns\TextColumn::make('created_at')->label('Dibuat pada')->sortable()->date('d/m/Y H:i'),
+                Tables\Columns\TextColumn::make('updated_at')->label('Diubah pada')->sortable()->date('d/m/Y H:i'),
             ])
             ->filters([
                 //

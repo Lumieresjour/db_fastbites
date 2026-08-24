@@ -19,9 +19,15 @@ class BillingDetailResource extends Resource
 {
     protected static ?string $model = BillingDetail::class;
 
+    protected static ?string $modelLabel = 'Detail Penagihan';
+
+    protected static ?string $pluralModelLabel = 'Detail Penagihan';
+
     protected static ?string $navigationIcon = 'heroicon-o-document';
 
-    protected static ?string $navigationGroup = 'Customers';
+    protected static ?string $navigationGroup = 'Pelanggan';
+
+    protected static ?string $navigationLabel = 'Detail Penagihan';
 
     public static function form(Form $form): Form
     {
@@ -35,13 +41,13 @@ class BillingDetailResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('user.name')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('user.email')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('phone')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('billing_address')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('city')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('country')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('user_id')->label('ID pengguna')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('user.name')->label('Nama pengguna')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('user.email')->label('Email pengguna')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('phone')->label('Nomor telepon')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('billing_address')->label('Alamat penagihan')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('city')->label('Kota')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('country')->label('Negara')->searchable()->sortable(),
             ])
             ->filters([
                 //
@@ -51,10 +57,10 @@ class BillingDetailResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
-                FilamentExportBulkAction::make('export'),
+                FilamentExportBulkAction::make('export')->label('Ekspor'),
             ])
             ->headerActions([
-                FilamentExportHeaderAction::make('export')
+                FilamentExportHeaderAction::make('export')->label('Ekspor')
             ]);
     }
 

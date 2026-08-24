@@ -21,9 +21,15 @@ class OrderResource extends Resource
 {
     protected static ?string $model = Order::class;
 
+    protected static ?string $modelLabel = 'Pesanan';
+
+    protected static ?string $pluralModelLabel = 'Pesanan';
+
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
-    protected static ?string $navigationGroup = 'Shop';
+    protected static ?string $navigationGroup = 'Toko';
+
+    protected static ?string $navigationLabel = 'Pesanan';
 
     public static function form(Form $form): Form
     {
@@ -31,15 +37,15 @@ class OrderResource extends Resource
             ->schema([
                 Forms\Components\Select::make('status')
                     ->options([
-                        'pending' => 'Pending',
-                        'processing' => 'Processing',
-                        'completed' => 'Completed',
-                        'canceled' => 'Canceled',
+                        'pending' => 'Menunggu',
+                        'processing' => 'Diproses',
+                        'completed' => 'Selesai',
+                        'canceled' => 'Dibatalkan',
                     ])
                     ->required(),
                 Forms\Components\Fieldset::make('user_id')
                     ->relationship('user')
-                    ->label('Customer')
+                    ->label('Pelanggan')
                     ->schema([
                         Forms\Components\TextInput::make('name')->disabled(),
                         Forms\Components\TextInput::make('email')->disabled(),
@@ -51,16 +57,16 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user.id')->searchable()->label('Customer id'),
-                Tables\Columns\TextColumn::make('user.name')->searchable()->label('Customer name'),
-                Tables\Columns\TextColumn::make('user.email')->searchable()->label('Customer Email')->sortable(),
+                Tables\Columns\TextColumn::make('user.id')->searchable()->label('ID pelanggan'),
+                Tables\Columns\TextColumn::make('user.name')->searchable()->label('Nama pelanggan'),
+                Tables\Columns\TextColumn::make('user.email')->searchable()->label('Email pelanggan')->sortable(),
                 Tables\Columns\BadgeColumn::make('status')
-                    ->label('Order status')
+                    ->label('Status pesanan')
                     ->enum([
-                        'pending' => 'Pending',
-                        'processing' => 'Processing',
-                        'completed' => 'Completed',
-                        'canceled' => 'Canceled',
+                        'pending' => 'Menunggu',
+                        'processing' => 'Diproses',
+                        'completed' => 'Selesai',
+                        'canceled' => 'Dibatalkan',
                     ])
                     ->colors([
                         'secondary' => 'pending',
@@ -73,8 +79,8 @@ class OrderResource extends Resource
                     ->prefix('Rp ')
                     ->formatStateUsing(fn ($state) => number_format($state, 0, ',', '.'))
                     ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')->sortable()->date('M d H:i'),
-                Tables\Columns\TextColumn::make('updated_at')->sortable()->date('M d H:i'),
+                Tables\Columns\TextColumn::make('created_at')->label('Dibuat pada')->sortable()->date('d/m/Y H:i'),
+                Tables\Columns\TextColumn::make('updated_at')->label('Diubah pada')->sortable()->date('d/m/Y H:i'),
             ])
             ->filters([
                 //
@@ -84,10 +90,10 @@ class OrderResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                FilamentExportBulkAction::make('export'),
+                FilamentExportBulkAction::make('export')->label('Ekspor'),
             ])
             ->headerActions([
-                FilamentExportHeaderAction::make('export')
+                FilamentExportHeaderAction::make('export')->label('Ekspor')
             ]);
     }
 

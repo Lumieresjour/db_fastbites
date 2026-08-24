@@ -21,7 +21,7 @@ class ListOrders extends ListRecords
     protected function getTableBulkActions(): array
     {
         return [
-            FilamentExportBulkAction::make('Export'),
+            FilamentExportBulkAction::make('export')->label('Ekspor'),
         ];
     }
 

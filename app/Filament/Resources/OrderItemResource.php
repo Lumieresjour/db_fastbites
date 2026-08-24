@@ -19,36 +19,43 @@ class OrderItemResource extends Resource
 {
     protected static ?string $model = OrderItem::class;
 
+    protected static ?string $modelLabel = 'Item Pesanan';
+
+    protected static ?string $pluralModelLabel = 'Item Pesanan';
+
     protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
 
-    protected static ?string $navigationGroup = 'Shop';
+    protected static ?string $navigationGroup = 'Toko';
+
+    protected static ?string $navigationLabel = 'Item Pesanan';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\Fieldset::make('product_id')
-                    ->label('Product information')
+                    ->label('Informasi produk')
                     ->relationship('product')
                     ->schema([
-                        Forms\Components\TextInput::make('name')->disabled(),
-                        Forms\Components\TextInput::make('SKU')->disabled(),
-                        Forms\Components\TextInput::make('quantity')->disabled(),
+                        Forms\Components\TextInput::make('name')->label('Nama produk')->disabled(),
+                        Forms\Components\TextInput::make('SKU')->label('SKU')->disabled(),
+                        Forms\Components\TextInput::make('quantity')->label('Jumlah')->disabled(),
                         Forms\Components\TextInput::make('price')
+                            ->label('Harga')
                             ->prefix('Rp ')
                             ->formatStateUsing(fn ($state) => number_format($state, 0, ',', '.'))
                             ->disabled(),
                     ]),
                 Forms\Components\Fieldset::make('order_id')
                     ->relationship('order')
-                    ->label('Information about the order')
+                    ->label('Informasi pesanan')
                     ->schema([
                         Forms\Components\Fieldset::make('user_id')
-                            ->label('Buyer information')
+                            ->label('Informasi pembeli')
                             ->relationship('user')
                             ->schema([
-                                Forms\Components\TextInput::make('name')->disabled(),
-                                Forms\Components\TextInput::make('email')->disabled(),
+                                Forms\Components\TextInput::make('name')->label('Nama')->disabled(),
+                                Forms\Components\TextInput::make('email')->label('Email')->disabled(),
                             ]),
                     ])
                     ->disabled(),
@@ -64,12 +71,12 @@ class OrderItemResource extends Resource
                 Tables\Columns\TextColumn::make('product.name')->sortable(),
                 Tables\Columns\TextColumn::make('quantity')->sortable(),
                 Tables\Columns\BadgeColumn::make('order.status')
-                    ->label('Order status')
+                    ->label('Status pesanan')
                     ->enum([
-                        'pending' => 'Pending',
-                        'processing' => 'Processing',
-                        'completed' => 'Completed',
-                        'canceled' => 'Canceled',
+                        'pending' => 'Menunggu',
+                        'processing' => 'Diproses',
+                        'completed' => 'Selesai',
+                        'canceled' => 'Dibatalkan',
                     ])
                     ->colors([
                         'secondary' => 'pending',
